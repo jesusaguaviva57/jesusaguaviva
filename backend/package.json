@@ -9,7 +9,11 @@
     "deploy": "wrangler deploy",
     "typecheck": "tsc --noEmit",
     "tail": "wrangler tail",
-    "secret:resend": "wrangler secret put RESEND_API_KEY"
+    "login": "wrangler login",
+    "logout": "wrangler logout",
+    "whoami": "wrangler whoami",
+    "secret:resend": "wrangler secret put RESEND_API_KEY",
+    "kv:create": "wrangler kv namespace create CACHE"
   },
   "dependencies": {
     "hono": "^4.6.9"

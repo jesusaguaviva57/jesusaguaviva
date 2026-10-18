@@ -134,10 +134,19 @@ jesusaguaviva/
 - Cuenta en **Resend** (gratuita: 100 correos/día, 3.000/mes) para el formulario.
 - Opcional: un dominio propio (para el correo de Resend y para el Worker).
 
-> **PowerShell y npm:** si al ejecutar `npm` ves *"la ejecución de scripts está deshabilitada en
-> este sistema"*, es la política de ejecución de Windows bloqueando `npm.ps1`. Usa `npm.cmd` en su
-> lugar (`npm.cmd install`) o ejecuta
-> `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`.
+> **¿`node`, `npm` o `npx` "no se reconocen como comando"?** Si acabas de instalar Node, las ventanas
+> de terminal que ya estaban abiertas conservan el PATH antiguo. **Cierra todas las ventanas de
+> terminal y abre una nueva**; `node -v` debe responder. (La carpeta `C:\Program Files\nodejs\` ya
+> está en el PATH del sistema.)
+>
+> **PowerShell y npm:** si ves *"la ejecución de scripts está deshabilitada en este sistema"*, es la
+> política de Windows bloqueando `npm.ps1`. Solución permanente:
+> `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` (ya aplicada en este equipo). Alternativa
+> puntual: escribir `npm.cmd` / `npx.cmd` en vez de `npm` / `npx`.
+>
+> **Atajos:** todos los comandos de despliegue tienen su script de npm, así que no hace falta
+> recordar `npx wrangler ...`: `npm run api:login`, `npm run api:secret`, `npm run api:deploy`,
+> `npm run api:tail` (desde la raíz) o `npm run login` / `secret:resend` / `deploy` (desde `backend/`).
 
 Instalación de dependencias (raíz del proyecto):
 

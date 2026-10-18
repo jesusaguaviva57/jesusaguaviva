@@ -6,7 +6,11 @@
   "scripts": {
     "install:all": "npm --prefix backend install && npm --prefix frontend install",
     "api:dev": "npm --prefix backend run dev",
+    "api:login": "npm --prefix backend run login",
+    "api:whoami": "npm --prefix backend run whoami",
+    "api:secret": "npm --prefix backend run secret:resend",
     "api:deploy": "npm --prefix backend run deploy",
+    "api:tail": "npm --prefix backend run tail",
     "api:typecheck": "npm --prefix backend run typecheck",
     "web:dev": "npm --prefix frontend run start",
     "web:build": "npm --prefix frontend run build"
