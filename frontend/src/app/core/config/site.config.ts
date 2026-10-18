@@ -47,7 +47,7 @@ export const SITE: SiteConfig = {
   shortName: 'Jesús Agua Viva',
   tagline: 'Un lugar para encontrarte con Dios',
   description:
-    'Somos una iglesia que cree en el poder transformador de Jesús. Te esperamos con los brazos abiertos: ven como estás.',
+    'Somos una iglesia que cree en el poder transformador de Jesús. Te esperamos con los brazos abiertos.',
 
   contact: {
     address: 'C. José Palanca, Carretera de Cádiz, 29003 Málaga',
@@ -64,7 +64,7 @@ export const SITE: SiteConfig = {
   },
 
   schedule: [
-    { title: 'Domingo', detail: 'Culto · 11:30 a.m.' },
+    { title: 'Domingo', detail: 'Culto · 11:15 a.m.' },
     { title: 'Domingo', detail: 'Reunión de Jóvenes · 16:00 p.m.' },
     { title: 'Viernes', detail: 'Reunión de Oración · 19:00 p.m.' },
   ],

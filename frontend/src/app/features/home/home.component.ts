@@ -71,7 +71,7 @@ import { LocationMapComponent } from '../location/location-map.component';
         <!-- Tarjeta de horarios -->
         <div class="card p-6 sm:p-8">
           <h2 class="text-lg font-bold text-slate-900">Horarios de reunión</h2>
-          <p class="mt-1 text-sm text-slate-600">Te esperamos. ¡Ven como estás!</p>
+          <p class="mt-1 text-sm text-slate-600">Te esperamos.</p>
 
           <ul class="mt-6 divide-y divide-slate-100">
             <li *ngFor="let item of site.schedule" class="flex items-center justify-between gap-4 py-3.5">
