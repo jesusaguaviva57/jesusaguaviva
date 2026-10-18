@@ -406,7 +406,9 @@ El `outputPath` es `dist/frontend` (definido en `angular.json`) y `vercel.json` 
 4. *Build Command*: `npm run build` · *Output Directory*: `dist/frontend` (se leen de `vercel.json`).
 5. *Environment Variables*: no hace falta ninguna (la URL del API va en `environment.production.ts`,
    que es información pública, no un secreto).
-6. **Deploy**. Obtendrás `https://jesusaguaviva.vercel.app`.
+6. **Node.js Version**: en *Settings → General* elige **20.x**. Angular 16 está probado con Node 18
+   y 20; este proyecto compila también con versiones más nuevas, pero 20.x es la apuesta segura.
+7. **Deploy**. Obtendrás `https://jesusaguaviva.vercel.app`.
 
 **Opción B — CLI**
 
@@ -574,7 +576,7 @@ export const SITE: SiteConfig = {
 | 429 al probar el formulario | Rate-limit: 5 envíos / 10 min (funciona también sin KV, en memoria). Espera, reinicia el Worker (`Ctrl+C` y `npm run dev`) o vacía la clave `rl:contact:*` en KV. |
 | 404 al recargar `/contacto` en Vercel | Revisa que `vercel.json` esté en la raíz del proyecto (`frontend/`) y el *Root Directory* sea `frontend`. |
 | Vercel rechaza `vercel.json` al desplegar | Alguna regla de `headers` no le gusta. Elimina la regla de caché por extensión (`"/(.*)\\.(js|css|...)"`) y deja solo las de seguridad; el SPA funcionará igual (perderás caché inmutable en los bundles). |
-| `ng build` falla con `Node.js version` | Angular 16 necesita Node 18.10+ (y < 21). `node -v` debe dar 18.x o 20.x. |
+| `ng build` falla con `Node.js version` | Angular 16 está probado con Node 18 y 20. En Vercel: *Settings → General → Node.js Version → 20.x*. Localmente también compila con Node 26. |
 | El Worker compila pero `tsc` se queja | Ejecuta `npm run typecheck` en `backend/` (necesita `@cloudflare/workers-types`). |
 
 ---
