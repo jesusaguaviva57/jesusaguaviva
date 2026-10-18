@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Iglesia Jesús Agua Viva</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1d3bcf" />
+    <meta
+      name="description"
+      content="Iglesia Jesús Agua Viva: un lugar para encontrarte con Dios. Lee la Biblia, conoce nuestra ubicación y escríbenos."
+    />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Iglesia Jesús Agua Viva" />
+    <meta
+      property="og:description"
+      content="Un lugar para encontrarte con Dios. Lee la Biblia en línea y visítanos."
+    />
+    <meta property="og:locale" content="es_ES" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!--
+      La API vive en Cloudflare Workers y el frontend en Vercel (dominios
+      distintos). Estos preconnect ahorran el handshake TLS en la primera
+      búsqueda bíblica o envío del formulario.
+    -->
+    <link rel="preconnect" href="https://jesusaguaviva-api.workers.dev" crossorigin />
+  </head>
+  <body class="bg-slate-50">
+    <app-root></app-root>
+    <noscript>
+      <p style="font-family: sans-serif; padding: 24px; text-align: center">
+        Esta web necesita JavaScript habilitado para funcionar.
+      </p>
+    </noscript>
+  </body>
+</html>

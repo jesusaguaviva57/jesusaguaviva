@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Jesús Agua Viva">
+  <rect width="64" height="64" rx="14" fill="#1d3bcf" />
+  <path
+    d="M32 12c5.2 7.2 10.4 12.9 10.4 20.4A10.4 10.4 0 0 1 32 42.8a10.4 10.4 0 0 1-10.4-10.4C21.6 24.9 26.8 19.2 32 12Z"
+    fill="#ffffff"
+    opacity="0.95"
+  />
+  <path d="M24 46h16v3H24z" fill="#bfd3fe" />
+  <path d="M30.5 43h3v9h-3z" fill="#bfd3fe" />
+</svg>

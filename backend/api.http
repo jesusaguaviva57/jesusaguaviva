@@ -1,0 +1,118 @@
+# ===========================================================================
+#  Pruebas manuales de la API (VS Code: extensión "REST Client")
+#  Antes: npm run dev   (en /backend)  ->  http://localhost:8787
+# ===========================================================================
+
+@host = http://localhost:8787
+@origin = http://localhost:4200
+
+### Índice de la API
+GET {{host}}/
+
+### Estado y configuración activa (no expone secretos)
+GET {{host}}/api/health
+
+### ---------------------------------------------------------------------------
+### BIBLIA
+### ---------------------------------------------------------------------------
+
+### Versículo suelto
+GET {{host}}/api/bible?query=Juan 3:16
+Origin: {{origin}}
+
+### Rango de versículos
+GET {{host}}/api/bible?query=Romanos 8:28-30
+
+### Capítulo completo (devuelve verses[])
+GET {{host}}/api/bible?query=Salmos 23
+
+### Libro con número (parse lo entiende)
+GET {{host}}/api/bible?query=1 Corintios 13:4-7
+
+### Caché: la segunda llamada debe traer "cached": true (si KV está activo)
+GET {{host}}/api/bible?query=Juan 3:16
+
+### Catálogo de versiones (español primero)
+GET {{host}}/api/bible/versions
+
+### ERROR 400: sin query
+GET {{host}}/api/bible
+
+### ERROR 400: referencia que no se puede interpretar
+GET {{host}}/api/bible?query=xyzzy
+
+### ERROR 404: capítulo inexistente
+GET {{host}}/api/bible?query=Juan 99:1
+
+### ERROR 404: versículo fuera de rango
+GET {{host}}/api/bible?query=Juan 3:99
+
+### ERROR 400 (si BIBLE_VERSION="rvr1960"): guardarraíl de versión inexistente
+GET {{host}}/api/bible?query=Juan 3:16
+
+### Preflight CORS desde un origen NO permitido (debe volver 204 sin ACAO)
+OPTIONS {{host}}/api/bible
+Origin: https://sitio-malicioso.example
+Access-Control-Request-Method: GET
+
+### Preflight CORS desde un origen permitido
+OPTIONS {{host}}/api/bible
+Origin: {{origin}}
+Access-Control-Request-Method: GET
+Access-Control-Request-Headers: content-type
+
+### ---------------------------------------------------------------------------
+### CONTACTO
+### ---------------------------------------------------------------------------
+
+### Envío correcto (con RESEND_DRY_RUN=true solo se registra en consola)
+POST {{host}}/api/contact
+Origin: {{origin}}
+Content-Type: application/json
+
+{
+  "name": "María Fernanda",
+  "email": "maria@ejemplo.com",
+  "subject": "Consulta sobre las reuniones de jóvenes",
+  "message": "Hola, quiero saber más sobre las reuniones de jóvenes y pedir oración por mi familia."
+}
+
+### ERROR 400: faltan/están mal los campos
+POST {{host}}/api/contact
+Content-Type: application/json
+
+{
+  "name": "A",
+  "email": "no-es-un-email",
+  "message": "corto"
+}
+
+### Honeypot: responde 202 y NO envía correo
+POST {{host}}/api/contact
+Content-Type: application/json
+
+{
+  "name": "Bot Spammer",
+  "email": "bot@spam.com",
+  "message": "Compra este producto maravilloso ahora mismo, precio increíble.",
+  "website": "http://spam.example"
+}
+
+### Rate limit: ejecuta varias veces seguidas -> 429 al superar 5 en 10 min
+POST {{host}}/api/contact
+Content-Type: application/json
+
+{
+  "name": "Prueba Rate",
+  "email": "rate@ejemplo.com",
+  "message": "Mensaje de prueba número uno para el limitador de peticiones."
+}
+
+### ERROR 400: Content-Type incorrecto
+POST {{host}}/api/contact
+Content-Type: text/plain
+
+{"name": "Test"}
+
+### ERROR 404 estructurado: ruta inexistente (GET /api/contact no existe)
+GET {{host}}/api/contact

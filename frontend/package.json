@@ -1,0 +1,38 @@
+{
+  "name": "jesusaguaviva-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SPA (Angular 16 + Tailwind) de la iglesia Jesús Agua Viva: hero, lector de Biblia, ubicación y formulario de contacto.",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "dev": "ng serve --open",
+    "build": "ng build",
+    "build:dev": "ng build --configuration development",
+    "watch": "ng build --watch --configuration development",
+    "typecheck": "ng build --configuration development --output-path=dist/typecheck"
+  },
+  "dependencies": {
+    "@angular/common": "^16.2.12",
+    "@angular/compiler": "^16.2.12",
+    "@angular/core": "^16.2.12",
+    "@angular/forms": "^16.2.12",
+    "@angular/platform-browser": "^16.2.12",
+    "@angular/router": "^16.2.12",
+    "rxjs": "~7.8.1",
+    "tslib": "^2.6.2",
+    "zone.js": "~0.13.3"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^16.2.12",
+    "@angular/cli": "^16.2.12",
+    "@angular/compiler-cli": "^16.2.12",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "typescript": "~5.1.6"
+  },
+  "engines": {
+    "node": ">=18.10"
+  }
+}

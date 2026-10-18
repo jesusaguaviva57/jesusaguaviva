@@ -1,0 +1,87 @@
+#:schema node_modules/wrangler/config-schema.json
+# ---------------------------------------------------------------------------
+# Configuración del Worker (API de la iglesia Jesús Agua Viva)
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/
+# ---------------------------------------------------------------------------
+
+name = "jesusaguaviva-api"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+
+# Solo expone el dominio *.workers.dev. Cuando tengas dominio propio,
+# descomenta la sección [routes] del final.
+workers_dev = true
+
+# ---------------------------------------------------------------------------
+# Variables NO secretas (visibles en el dashboard de Cloudflare)
+# ---------------------------------------------------------------------------
+[vars]
+# Entorno lógico. En local puedes sobrescribirlo con .dev.vars
+ENVIRONMENT = "production"
+
+# ---------------------------------------------------------------------------
+# Versión de la Biblia servida por Midvash.
+#
+# ⚠️  IMPORTANTE: la RVR1960 **no existe** en la API pública de Midvash
+#     (está protegida por copyright de las Sociedades Bíblicas Unidas).
+#     Slugs en español realmente disponibles:
+#        - "rvr1909" -> Reina-Valera 1909 (dominio público)  <-- recomendado
+#        - "rvg"     -> Reina-Valera Gómez 2010
+#     Si se pide un slug inexistente, Midvash responde 200 con RVR1909:
+#     este Worker valida el slug contra /v1/versions y devuelve 400 en vez
+#     de mostrar texto incorrecto. Ver README.md -> "Sobre la versión RV1960".
+# ---------------------------------------------------------------------------
+BIBLE_VERSION = "rvr1909"
+
+# ---------------------------------------------------------------------------
+# CORS: lista de orígenes permitidos separados por coma.
+# NUNCA uses "*" en producción. Admite comodines para previews de Vercel.
+# ---------------------------------------------------------------------------
+ALLOWED_ORIGINS = "http://localhost:4200,http://127.0.0.1:4200,https://jesusaguaviva.vercel.app,https://jesusaguaviva-*.vercel.app"
+
+# URL base de la API de la Biblia
+MIDVASH_BASE_URL = "https://api.midvash.com"
+
+# Buzón que recibe los mensajes del formulario de contacto
+CONTACT_TO = "jesusaguaviva57@gmail.com"
+
+# Remitente de los correos. El dominio del remitente DEBE estar verificado en Resend.
+# - Sin dominio propio (lo más rápido): deja el dominio de pruebas de Resend.
+#   Con "onboarding@resend.dev" Resend solo entrega en el email con el que te
+#   registraste (es decir, en CONTACT_TO si es tu misma cuenta).
+# - Con dominio propio: verifícalo en Resend y pon aquí tu dirección
+#   (ej. "Web Jesús Agua Viva <no-reply@tudominio.org>").
+CONTACT_FROM = "Web Jesús Agua Viva <onboarding@resend.dev>"
+
+# TTL en segundos de la caché de versículos en KV (30 días por defecto)
+BIBLE_CACHE_TTL = "2592000"
+
+# Si es "true", los correos NO se envían: se escriben en los logs del Worker.
+# Útil para desarrollo local sin API Key de Resend (ver .dev.vars.example).
+RESEND_DRY_RUN = "false"
+
+# ---------------------------------------------------------------------------
+# KV Namespace (OPCIONAL pero recomendado): cachea los versículos de la
+# Biblia y aplica rate-limit al formulario de contacto.
+#
+# Para activarlo:
+#   npx wrangler kv namespace create CACHE
+#   npx wrangler kv namespace create CACHE --preview
+# y pega aquí los ids devueltos, luego descomenta el bloque.
+# Si no está configurado, la API funciona igual (sin caché ni rate-limit).
+# ---------------------------------------------------------------------------
+# [[kv_namespaces]]
+# binding = "CACHE"
+# id = "PEGA_AQUI_EL_ID_DE_PRODUCCION"
+# preview_id = "PEGA_AQUI_EL_ID_DE_PREVIEW"
+
+# ---------------------------------------------------------------------------
+# Deploy en dominio propio (opcional)
+# ---------------------------------------------------------------------------
+# [[routes]]
+# pattern = "api.jesusaguaviva.org"
+# custom_domain = true
+
+# Observabilidad (logs + trazas en el dashboard)
+[observability]
+enabled = true

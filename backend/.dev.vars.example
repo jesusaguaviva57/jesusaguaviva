@@ -1,0 +1,22 @@
+# ---------------------------------------------------------------------------
+# Copia este archivo como `.dev.vars` para desarrollo local con `wrangler dev`.
+# `.dev.vars` NUNCA se sube al repositorio (está en .gitignore) y NO se usa
+# en producción: en producción los secretos se cargan con `wrangler secret put`.
+#
+#   cp .dev.vars.example .dev.vars
+#   npx wrangler dev
+# ---------------------------------------------------------------------------
+
+# Mientras desarrollas puedes dejar el envío de correo en modo simulado
+# (imprime el email en la consola en lugar de enviarlo con Resend).
+RESEND_DRY_RUN = "true"
+
+# Si quieres probar el envío real en local, pon tu API Key de Resend
+# y comenta la línea de arriba.
+# RESEND_API_KEY = "re_xxxxxxxxxxxxxxxxxxxxxxxx"
+
+# Destino de pruebas del formulario de contacto
+# CONTACT_TO = "tucorreo@gmail.com"
+
+# Cambia el entorno lógico en local
+ENVIRONMENT = "development"
