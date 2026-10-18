@@ -14,6 +14,12 @@ serverless de dos despliegues independientes:
 > El navegador **nunca** llama a Midvash ni a Resend: todo pasa por el Worker, que centraliza
 > CORS, caché, validación, secretos y manejo de errores.
 
+> **Estado del despliegue (18/10/2026).** Backend ya publicado y verificado en producción:
+> `https://jesusaguaviva-api.jesusaguaviva57.workers.dev` (cuenta Cloudflare `jesusaguaviva57`,
+> subdominio `jesusaguaviva57`, versión bíblica `rvr1909`). Pendiente: el despliegue del frontend
+> en Vercel y la clave `RESEND_API_KEY` para que el formulario envíe correo real (hasta entonces
+> `/api/contact` responde `500 NOT_CONFIGURED`).
+
 ---
 
 ## ⚠️ Lee esto primero: sobre la Biblia Reina-Valera 1960 (RVR1960)

@@ -51,7 +51,7 @@ CONTACT_TO = "jesusaguaviva57@gmail.com"
 #   registraste (es decir, en CONTACT_TO si es tu misma cuenta).
 # - Con dominio propio: verifícalo en Resend y pon aquí tu dirección
 #   (ej. "Web Jesús Agua Viva <no-reply@tudominio.org>").
-CONTACT_FROM = "Web Jesús Agua Viva <jesusaguaviva57@gmail.com>"
+CONTACT_FROM = "Web Jesús Agua Viva <onboarding@resend.dev>"
 
 # TTL en segundos de la caché de versículos en KV (30 días por defecto)
 BIBLE_CACHE_TTL = "2592000"
