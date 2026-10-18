@@ -17,21 +17,30 @@ import { LocationMapComponent } from '../location/location-map.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <!-- ======================= HERO ======================= -->
-    <section id="inicio" class="relative overflow-hidden border-b border-slate-200 bg-white">
+    <section
+      id="inicio"
+      class="relative overflow-hidden border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900"
+    >
       <div
-        class="pointer-events-none absolute inset-x-0 -top-32 h-72 bg-gradient-to-b from-brand-50 to-transparent"
+        class="pointer-events-none absolute inset-x-0 -top-32 h-72 bg-gradient-to-b from-brand-50 to-transparent dark:from-brand-950/70"
         aria-hidden="true"
       ></div>
 
       <div class="container-page relative grid gap-12 py-16 lg:grid-cols-2 lg:items-center lg:py-24">
         <div>
-          <p class="badge bg-brand-50 text-brand-800">{{ site.name }}</p>
+          <p class="badge bg-brand-50 text-brand-800 dark:bg-brand-950 dark:text-brand-300">
+            {{ site.name }}
+          </p>
 
-          <h1 class="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-5xl">
+          <h1
+            class="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-5xl dark:text-slate-100"
+          >
             {{ site.tagline }}
           </h1>
 
-          <p class="mt-5 max-w-xl text-lg leading-relaxed text-slate-600">{{ site.description }}</p>
+          <p class="mt-5 max-w-xl text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+            {{ site.description }}
+          </p>
 
           <div class="mt-8 flex flex-wrap items-center gap-3">
             <a routerLink="/contacto" class="btn-primary px-5 py-3 text-base">
@@ -44,17 +53,18 @@ import { LocationMapComponent } from '../location/location-map.component';
                 />
               </svg>
             </a>
-            <a
-              [routerLink]="['/']"
-              fragment="biblia"
-              class="btn-secondary px-5 py-3 text-base"
-            >
+            <a [routerLink]="['/']" fragment="biblia" class="btn-secondary px-5 py-3 text-base">
               Leer la Biblia
             </a>
           </div>
 
-          <p class="mt-8 flex items-start gap-2.5 text-sm text-slate-600">
-            <svg class="mt-0.5 h-5 w-5 shrink-0 text-brand-700" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <p class="mt-8 flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-400">
+            <svg
+              class="mt-0.5 h-5 w-5 shrink-0 text-brand-700 dark:text-brand-400"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
               <path
                 fill-rule="evenodd"
                 d="M9.69 18.93a.75.75 0 0 0 1.12 0c.59-.63 4.94-5.42 4.94-9.18a6.25 6.25 0 1 0-12.5 0c0 3.76 4.35 8.55 4.94 9.18ZM10 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
@@ -62,7 +72,9 @@ import { LocationMapComponent } from '../location/location-map.component';
               />
             </svg>
             <span>
-              <span class="font-medium text-slate-800">{{ site.contact.address }}</span><br />
+              <span class="font-medium text-slate-800 dark:text-slate-200">
+                {{ site.contact.address }}</span
+              ><br />
               {{ site.contact.city }} · {{ site.contact.country }}
             </span>
           </p>
@@ -70,13 +82,13 @@ import { LocationMapComponent } from '../location/location-map.component';
 
         <!-- Tarjeta de horarios -->
         <div class="card p-6 sm:p-8">
-          <h2 class="text-lg font-bold text-slate-900">Horarios de reunión</h2>
-          <p class="mt-1 text-sm text-slate-600">Te esperamos.</p>
+          <h2 class="text-lg font-bold text-slate-900 dark:text-slate-100">Horarios de reunión</h2>
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Te esperamos.</p>
 
-          <ul class="mt-6 divide-y divide-slate-100">
+          <ul class="mt-6 divide-y divide-slate-100 dark:divide-slate-800">
             <li *ngFor="let item of site.schedule" class="flex items-center justify-between gap-4 py-3.5">
-              <span class="text-sm font-semibold text-slate-800">{{ item.title }}</span>
-              <span class="text-sm text-slate-600">{{ item.detail }}</span>
+              <span class="text-sm font-semibold text-slate-800 dark:text-slate-200">{{ item.title }}</span>
+              <span class="text-sm text-slate-600 dark:text-slate-400">{{ item.detail }}</span>
             </li>
           </ul>
 
@@ -93,7 +105,8 @@ import { LocationMapComponent } from '../location/location-map.component';
         <h2 class="section-title">Lee la Biblia</h2>
         <p class="section-subtitle">
           Busca cualquier versículo por su referencia y léelo al instante. Texto bíblico:
-          <span class="font-medium text-slate-700">{{ versionLabel }}</span>.
+          <span class="font-medium text-slate-700 dark:text-slate-300">{{ versionLabel }}</span
+          >.
         </p>
       </header>
 
@@ -103,7 +116,10 @@ import { LocationMapComponent } from '../location/location-map.component';
     </section>
 
     <!-- ======================= UBICACIÓN ======================= -->
-    <section id="ubicacion" class="border-y border-slate-200 bg-white py-16 sm:py-20">
+    <section
+      id="ubicacion"
+      class="border-y border-slate-200 bg-white py-16 sm:py-20 dark:border-slate-800 dark:bg-slate-900"
+    >
       <div class="container-page">
         <header>
           <h2 class="section-title">Nuestra ubicación</h2>
@@ -122,7 +138,7 @@ import { LocationMapComponent } from '../location/location-map.component';
     <section class="container-page py-16 sm:py-20">
       <div class="card flex flex-col items-center gap-5 p-8 text-center sm:p-12">
         <h2 class="section-title">¿Tienes una petición o una pregunta?</h2>
-        <p class="max-w-xl text-slate-600">
+        <p class="max-w-xl text-slate-600 dark:text-slate-400">
           Escríbenos y alguien del equipo te responderá lo antes posible. También puedes visitarnos
           cualquier domingo.
         </p>

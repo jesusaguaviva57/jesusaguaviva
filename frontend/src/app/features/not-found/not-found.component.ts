@@ -9,11 +9,13 @@ import { RouterLink } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="container-page flex min-h-[60vh] flex-col items-center justify-center py-20 text-center">
-      <p class="text-sm font-bold uppercase tracking-widest text-brand-700">Error 404</p>
-      <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+      <p class="text-sm font-bold uppercase tracking-widest text-brand-700 dark:text-brand-300">
+        Error 404
+      </p>
+      <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl dark:text-slate-100">
         No encontramos esta página
       </h1>
-      <p class="mt-4 max-w-lg text-slate-600">
+      <p class="mt-4 max-w-lg text-slate-600 dark:text-slate-400">
         Puede que el enlace haya cambiado o que ya no exista. Vuelve al inicio para seguir leyendo la
         Biblia o escribirnos.
       </p>

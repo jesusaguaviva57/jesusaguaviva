@@ -61,13 +61,13 @@ export class AlertComponent {
   get containerClass(): string {
     switch (this.variant) {
       case 'success':
-        return 'border-emerald-200 bg-emerald-50 text-emerald-800';
+        return 'border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-200';
       case 'error':
-        return 'border-red-200 bg-red-50 text-red-800';
+        return 'border-red-200 bg-red-50 text-red-800 dark:border-red-800 dark:bg-red-950 dark:text-red-200';
       case 'warning':
-        return 'border-amber-200 bg-amber-50 text-amber-900';
+        return 'border-amber-200 bg-amber-50 text-amber-900 dark:border-amber-800 dark:bg-amber-950 dark:text-amber-200';
       default:
-        return 'border-brand-200 bg-brand-50 text-brand-900';
+        return 'border-brand-200 bg-brand-50 text-brand-900 dark:border-brand-800 dark:bg-brand-950 dark:text-brand-200';
     }
   }
 

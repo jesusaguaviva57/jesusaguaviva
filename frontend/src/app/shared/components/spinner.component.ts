@@ -12,7 +12,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <svg
-      class="animate-spin text-brand-700"
+      class="animate-spin text-brand-700 dark:text-brand-400"
       [ngClass]="sizeClass"
       viewBox="0 0 24 24"
       fill="none"

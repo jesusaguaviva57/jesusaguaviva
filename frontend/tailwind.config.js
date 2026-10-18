@@ -1,5 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  // El modo oscuro se controla con la clase `dark` en <html>: así el usuario
+  // puede forzarlo con el botón y, si no lo hace, seguimos lo que diga el
+  // navegador (prefers-color-scheme). Ver `ThemeService`.
+  darkMode: 'class',
   content: ['./src/**/*.{html,ts}'],
   theme: {
     extend: {

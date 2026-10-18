@@ -18,7 +18,7 @@ import { buildDirectionsUrl, toMapSrc } from '../../core/utils/maps.util';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="card overflow-hidden">
-      <div class="relative aspect-[4/3] w-full bg-slate-100 sm:aspect-[16/9]">
+      <div class="relative aspect-[4/3] w-full bg-slate-100 sm:aspect-[16/9] dark:bg-slate-800">
         <iframe
           class="absolute inset-0 h-full w-full border-0"
           [src]="embedSrc"
@@ -31,9 +31,11 @@ import { buildDirectionsUrl, toMapSrc } from '../../core/utils/maps.util';
 
       <div class="grid gap-6 p-6 sm:grid-cols-2">
         <div>
-          <h3 class="text-sm font-bold uppercase tracking-wide text-slate-900">Dirección</h3>
-          <address class="mt-3 space-y-1 text-sm not-italic text-slate-600">
-            <p class="font-medium text-slate-800">{{ site.contact.address }}</p>
+          <h3 class="text-sm font-bold uppercase tracking-wide text-slate-900 dark:text-slate-100">
+            Dirección
+          </h3>
+          <address class="mt-3 space-y-1 text-sm not-italic text-slate-600 dark:text-slate-400">
+            <p class="font-medium text-slate-800 dark:text-slate-200">{{ site.contact.address }}</p>
             <p>{{ site.contact.city }} · {{ site.contact.country }}</p>
           </address>
 
@@ -56,13 +58,18 @@ import { buildDirectionsUrl, toMapSrc } from '../../core/utils/maps.util';
         </div>
 
         <div>
-          <h3 class="text-sm font-bold uppercase tracking-wide text-slate-900">Reuniones</h3>
+          <h3 class="text-sm font-bold uppercase tracking-wide text-slate-900 dark:text-slate-100">
+            Reuniones
+          </h3>
           <ul class="mt-3 space-y-2.5">
             <li *ngFor="let item of site.schedule" class="flex items-start gap-3 text-sm">
-              <span class="mt-0.5 rounded-md bg-brand-50 px-2 py-0.5 text-xs font-bold text-brand-800">
+              <span
+                class="mt-0.5 rounded-md bg-brand-50 px-2 py-0.5 text-xs font-bold text-brand-800
+                  dark:bg-brand-950 dark:text-brand-300"
+              >
                 {{ item.title }}
               </span>
-              <span class="text-slate-600">{{ item.detail }}</span>
+              <span class="text-slate-600 dark:text-slate-400">{{ item.detail }}</span>
             </li>
           </ul>
         </div>

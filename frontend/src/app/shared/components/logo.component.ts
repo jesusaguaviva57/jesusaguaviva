@@ -24,8 +24,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
         decoding="async"
       />
       <span *ngIf="showName" class="flex flex-col leading-tight">
-        <span class="text-base font-bold tracking-tight text-slate-900">{{ name }}</span>
-        <span class="text-xs font-medium text-brand-800">{{ tagline }}</span>
+        <span class="text-base font-bold tracking-tight text-slate-900 dark:text-slate-100">{{ name }}</span>
+        <span class="text-xs font-medium text-brand-800 dark:text-brand-300">{{ tagline }}</span>
       </span>
     </span>
   `,

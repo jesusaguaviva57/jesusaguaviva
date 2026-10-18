@@ -6,7 +6,7 @@ import { LocationMapComponent } from '../location/location-map.component';
 import { ContactFormComponent } from './contact-form.component';
 
 /**
- * Página de contacto: formulario + canales directos + mapa.
+ * Página de contacto: formulario + canales directos + redes + mapa.
  */
 @Component({
   selector: 'app-contact-page',
@@ -14,9 +14,11 @@ import { ContactFormComponent } from './contact-form.component';
   imports: [CommonModule, ContactFormComponent, LocationMapComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <section class="border-b border-slate-200 bg-white py-14">
+    <section class="border-b border-slate-200 bg-white py-14 dark:border-slate-800 dark:bg-slate-900">
       <div class="container-page">
-        <h1 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Contacto</h1>
+        <h1 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl dark:text-slate-100">
+          Contacto
+        </h1>
         <p class="section-subtitle">
           Escríbenos y te responderemos lo antes posible. También puedes visitarnos cualquier domingo.
         </p>
@@ -38,15 +40,19 @@ import { ContactFormComponent } from './contact-form.component';
 
         <aside class="space-y-4">
           <div class="card p-6">
-            <h2 class="text-sm font-bold uppercase tracking-wide text-slate-900">Escríbenos</h2>
+            <h2 class="text-sm font-bold uppercase tracking-wide text-slate-900 dark:text-slate-100">
+              Escríbenos
+            </h2>
             <ul class="mt-4 space-y-3 text-sm">
               <li>
-                <a class="flex items-start gap-3 rounded-lg p-2 transition hover:bg-slate-50"
-                   [href]="'mailto:' + site.contact.email">
-                  <span class="text-brand-700">✉️</span>
+                <a
+                  class="flex items-start gap-3 rounded-lg p-2 transition hover:bg-slate-50 dark:hover:bg-slate-800"
+                  [href]="'mailto:' + site.contact.email"
+                >
+                  <span class="text-brand-700 dark:text-brand-400">✉️</span>
                   <span>
-                    <span class="block font-medium text-slate-800">Correo</span>
-                    <span class="text-slate-600">{{ site.contact.email }}</span>
+                    <span class="block font-medium text-slate-800 dark:text-slate-200">Correo</span>
+                    <span class="text-slate-600 dark:text-slate-400">{{ site.contact.email }}</span>
                   </span>
                 </a>
               </li>
@@ -54,24 +60,48 @@ import { ContactFormComponent } from './contact-form.component';
           </div>
 
           <div class="card p-6">
-            <h2 class="text-sm font-bold uppercase tracking-wide text-slate-900">Reuniones</h2>
+            <h2 class="text-sm font-bold uppercase tracking-wide text-slate-900 dark:text-slate-100">
+              Reuniones
+            </h2>
             <ul class="mt-4 space-y-3 text-sm">
               <li *ngFor="let item of site.schedule" class="flex items-start justify-between gap-4">
-                <span class="font-medium text-slate-800">{{ item.title }}</span>
-                <span class="text-right text-slate-600">{{ item.detail }}</span>
+                <span class="font-medium text-slate-800 dark:text-slate-200">{{ item.title }}</span>
+                <span class="text-right text-slate-600 dark:text-slate-400">{{ item.detail }}</span>
               </li>
             </ul>
           </div>
 
           <div class="card p-6">
-            <h2 class="text-sm font-bold uppercase tracking-wide text-slate-900">Dirección</h2>
-            <address class="mt-3 space-y-1 text-sm not-italic text-slate-600">
-              <p class="font-medium text-slate-800">{{ site.contact.address }}</p>
+            <h2 class="text-sm font-bold uppercase tracking-wide text-slate-900 dark:text-slate-100">
+              Dirección
+            </h2>
+            <address class="mt-3 space-y-1 text-sm not-italic text-slate-600 dark:text-slate-400">
+              <p class="font-medium text-slate-800 dark:text-slate-200">{{ site.contact.address }}</p>
               <p>{{ site.contact.city }} · {{ site.contact.country }}</p>
             </address>
             <a class="btn-secondary mt-4 w-full" [href]="directionsUrl" target="_blank" rel="noopener noreferrer">
               Cómo llegar
             </a>
+          </div>
+
+          <!-- Redes sociales -->
+          <div class="card p-6">
+            <h2 class="text-sm font-bold uppercase tracking-wide text-slate-900 dark:text-slate-100">
+              Redes sociales
+            </h2>
+            <ul class="mt-4 space-y-2 text-sm">
+              <li *ngFor="let social of site.social">
+                <a
+                  class="flex items-center justify-between gap-3 rounded-lg p-2 transition hover:bg-slate-50 dark:hover:bg-slate-800"
+                  [href]="social.href"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="font-medium text-slate-800 dark:text-slate-200">{{ social.label }}</span>
+                  <span class="text-slate-600 dark:text-slate-400">{{ social.handle ?? 'Visitar' }}</span>
+                </a>
+              </li>
+            </ul>
           </div>
         </aside>
       </div>

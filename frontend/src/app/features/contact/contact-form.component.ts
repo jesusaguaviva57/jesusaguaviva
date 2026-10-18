@@ -25,18 +25,21 @@ type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
   template: `
     <!-- Éxito -->
     <div *ngIf="status() === 'success'" class="card p-8 text-center animate-fade-in-up">
-      <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+      <div
+        class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-700
+          dark:bg-emerald-900/60 dark:text-emerald-300"
+      >
         <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path
             d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.7 7.7-5.4 5.4a1 1 0 0 1-1.4 0l-2.6-2.6a1 1 0 1 1 1.4-1.4l1.9 1.9 4.7-4.7a1 1 0 0 1 1.4 1.4Z"
           />
         </svg>
       </div>
-      <h3 class="mt-4 text-lg font-bold text-slate-900">¡Mensaje enviado!</h3>
-      <p class="mt-2 text-sm text-slate-600">
+      <h3 class="mt-4 text-lg font-bold text-slate-900 dark:text-slate-100">¡Mensaje enviado!</h3>
+      <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
         Gracias por escribirnos. Te responderemos muy pronto.
       </p>
-      <p *ngIf="dryRun()" class="mt-2 text-xs text-amber-700">
+      <p *ngIf="dryRun()" class="mt-2 text-xs text-amber-700 dark:text-amber-300">
         Modo demostración: el correo no se envió realmente (RESEND_DRY_RUN está activo).
       </p>
       <button type="button" class="btn-secondary mt-6" (click)="reset()">Enviar otro mensaje</button>
@@ -112,7 +115,7 @@ type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
             <p *ngIf="isInvalid('message')" class="field-error mt-0">
               {{ fieldError('message', 'El mensaje debe tener al menos 10 caracteres.') }}
             </p>
-            <span class="ml-auto shrink-0 text-xs text-slate-400">{{ remainingChars }} / 4000</span>
+            <span class="ml-auto shrink-0 text-xs text-slate-400 dark:text-slate-500">{{ remainingChars }} / 4000</span>
           </div>
         </div>
       </div>
@@ -124,7 +127,7 @@ type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
       </div>
 
       <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p class="text-xs text-slate-500">
+        <p class="text-xs text-slate-500 dark:text-slate-400">
           Tus datos solo se usan para responderte.
         </p>
         <button type="submit" class="btn-primary px-6 py-3" [disabled]="status() === 'submitting'">

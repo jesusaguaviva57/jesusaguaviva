@@ -14,6 +14,8 @@ export interface ScheduleItem {
 export interface SocialLink {
   label: string;
   href: string;
+  /** Usuario visible de la red (ej. "@somos_aguaviva1"). Opcional. */
+  handle?: string;
 }
 
 export interface SiteConfig {
@@ -70,9 +72,22 @@ export const SITE: SiteConfig = {
   ],
 
   social: [
-    { label: 'Facebook', href: 'https://www.facebook.com/jesusaguaviva57/' },
-    { label: 'Instagram', href: 'https://instagram.com/iglesia_jesus_agua_viva' },
-    { label: 'YouTube', href: 'https://www.youtube.com/@iglesia_jesus_agua_viva' },
+    { label: 'Facebook', href: 'https://www.facebook.com/jesusaguaviva57/', handle: '@jesusaguaviva57' },
+    {
+      label: 'Instagram',
+      href: 'https://instagram.com/iglesia_jesus_agua_viva',
+      handle: '@iglesia_jesus_agua_viva',
+    },
+    {
+      label: 'YouTube',
+      href: 'https://www.youtube.com/@iglesia_jesus_agua_viva',
+      handle: '@iglesia_jesus_agua_viva',
+    },
+    {
+      label: 'TikTok',
+      href: 'https://www.tiktok.com/@somos_aguaviva1',
+      handle: '@somos_aguaviva1',
+    },
   ],
 };
 

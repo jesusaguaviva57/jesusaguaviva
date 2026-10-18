@@ -24,13 +24,37 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!--
+      Tema claro/oscuro ANTES de que cargue Angular.
+      Evita el destello blanco: si el usuario ya eligió, se usa su elección; si no,
+      se respeta `prefers-color-scheme` del navegador. El ThemeService de Angular
+      se sincroniza después con este mismo estado (misma clave en localStorage).
+    -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('jagv-theme');
+          var dark =
+            stored === 'dark' ||
+            (stored !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          var root = document.documentElement;
+          if (dark) root.classList.add('dark');
+          root.style.colorScheme = dark ? 'dark' : 'light';
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute('content', dark ? '#0b1220' : '#1d3bcf');
+        } catch (e) {
+          /* sin localStorage (modo privado): se queda en claro */
+        }
+      })();
+    </script>
+
+    <!--
       La API vive en Cloudflare Workers y el frontend en Vercel (dominios
       distintos). Estos preconnect ahorran el handshake TLS en la primera
       búsqueda bíblica o envío del formulario.
     -->
     <link rel="preconnect" href="https://jesusaguaviva-api.jesusaguaviva57.workers.dev" crossorigin />
   </head>
-  <body class="bg-slate-50">
+  <body class="bg-slate-50 dark:bg-slate-950">
     <app-root></app-root>
     <noscript>
       <p style="font-family: sans-serif; padding: 24px; text-align: center">

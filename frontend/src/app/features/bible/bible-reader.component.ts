@@ -36,7 +36,7 @@ import { SpinnerComponent } from '../../shared/components/spinner.component';
             spellcheck="false"
             aria-describedby="referencia-ayuda"
           />
-          <p id="referencia-ayuda" class="mt-1.5 text-xs text-slate-500">
+          <p id="referencia-ayuda" class="mt-1.5 text-xs text-slate-500 dark:text-slate-400">
             Escribe un versículo (<em>Juan 3:16</em>), un rango (<em>Romanos 8:28-30</em>) o un capítulo
             completo (<em>Salmos 23</em>).
           </p>
@@ -51,7 +51,9 @@ import { SpinnerComponent } from '../../shared/components/spinner.component';
 
       <!-- Sugerencias rápidas -->
       <div class="mt-4 flex flex-wrap items-center gap-2">
-        <span class="text-xs font-semibold uppercase tracking-wide text-slate-400">Sugerencias</span>
+        <span class="text-xs font-semibold uppercase tracking-wide text-slate-400 dark:text-slate-500">
+          Sugerencias
+        </span>
         <button
           *ngFor="let suggestion of suggestions"
           type="button"
@@ -63,7 +65,11 @@ import { SpinnerComponent } from '../../shared/components/spinner.component';
       </div>
 
       <!-- Estado: cargando -->
-      <div *ngIf="loading()" class="mt-6 flex items-center gap-3 rounded-xl bg-slate-50 p-4 text-sm text-slate-600">
+      <div
+        *ngIf="loading()"
+        class="mt-6 flex items-center gap-3 rounded-xl bg-slate-50 p-4 text-sm text-slate-600
+          dark:bg-slate-800/60 dark:text-slate-300"
+      >
         <app-spinner size="sm" label="Consultando la Biblia" />
         <span>Consultando la Biblia…</span>
       </div>
@@ -81,16 +87,23 @@ import { SpinnerComponent } from '../../shared/components/spinner.component';
 
       <!-- Estado: resultado -->
       <article *ngIf="verse() as passage" class="mt-6 animate-fade-in-up">
-        <header class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-4">
+        <header
+          class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-4
+            dark:border-slate-800"
+        >
           <div>
-            <h3 class="font-serif text-xl font-bold text-slate-900">{{ lastQuery() }}</h3>
-            <p class="mt-0.5 text-xs text-slate-500">
+            <h3 class="font-serif text-xl font-bold text-slate-900 dark:text-slate-100">
+              {{ lastQuery() }}
+            </h3>
+            <p class="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
               {{ passage.bookName }} {{ passage.chapter }}:{{ passage.verse }}<ng-container
                 *ngIf="passage.verseEnd > passage.verse">-{{ passage.verseEnd }}</ng-container>
             </p>
           </div>
           <div class="flex flex-wrap items-center gap-2">
-            <span class="badge bg-brand-50 text-brand-800">{{ passage.versionName }}</span>
+            <span class="badge bg-brand-50 text-brand-800 dark:bg-brand-950 dark:text-brand-300">
+              {{ passage.versionName }}
+            </span>
             <span *ngIf="passage.cached" class="badge" title="Servido desde la caché">⚡ caché</span>
           </div>
         </header>
@@ -102,18 +115,29 @@ import { SpinnerComponent } from '../../shared/components/spinner.component';
 
         <!-- Versículo único -->
         <blockquote *ngIf="!isChapter()" class="mt-5">
-          <p class="font-serif text-lg leading-relaxed text-slate-800 sm:text-xl">{{ passage.text }}</p>
+          <p class="font-serif text-lg leading-relaxed text-slate-800 sm:text-xl dark:text-slate-200">
+            {{ passage.text }}
+          </p>
         </blockquote>
 
         <!-- Capítulo completo: un versículo por línea con su número -->
         <ol *ngIf="isChapter()" class="mt-5 space-y-3">
-          <li *ngFor="let item of numberedVerses()" class="font-serif text-base leading-relaxed text-slate-800 sm:text-lg">
-            <sup class="mr-1.5 select-none align-super text-xs font-sans font-bold text-brand-700">{{ item.number }}</sup>
+          <li
+            *ngFor="let item of numberedVerses()"
+            class="font-serif text-base leading-relaxed text-slate-800 sm:text-lg dark:text-slate-200"
+          >
+            <sup class="mr-1.5 select-none align-super text-xs font-sans font-bold text-brand-700 dark:text-brand-400">
+              {{ item.number }}
+            </sup>
             {{ item.text }}
           </li>
         </ol>
 
-        <p *ngIf="passage.copyright" class="mt-6 whitespace-pre-line border-t border-slate-200 pt-4 text-xs text-slate-500">
+        <p
+          *ngIf="passage.copyright"
+          class="mt-6 whitespace-pre-line border-t border-slate-200 pt-4 text-xs text-slate-500
+            dark:border-slate-800 dark:text-slate-400"
+        >
           {{ passage.copyright }}
         </p>
       </article>
